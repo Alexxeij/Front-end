@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX</title>
+</head>
+<body>
+<button id="myButton">click here!</button>
+<div id="container"></div>
+
+<script>
+    function sendAjax(url) {
+        return new Promise((ok, error)=> {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', url);
+            xhr.send();
+            xhr.addEventListener('load', ()=> {
+                ok(xhr.responseText);
+            });
+            xhr.addEventListener('error', ()=> {
+                error();
+            });
+        });
+    }
+    let btn = document.getElementById('myButton');
+    btn.addEventListener('click', ()=> {
+        sendAjax('text.txt').then(responseText=> {
+            let div = document.getElementById('container');
+            div.innerHTML = responseText;
+            document.body.appendChild(div);
+        });
+    })
+</script>
+</body>
+</html>
