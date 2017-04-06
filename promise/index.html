@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>promise</title>
+</head>
+<body>
+ <script>
+     let url1 ="https://i.ytimg.com/vi/IhF3VdsQvg4/maxresdefault.jpg";
+     let url2 = "http://minionomaniya.ru/wp-content/uploads/2016/02/minion-bob-foto.jpg";
+     let url3 = "http://minionomaniya.ru/wp-content/uploads/2016/01/minionLogo.jpg";
+
+
+     function loadImege(url) {
+       return new Promise((ok,error)=>{
+           let i = new Image();
+           document.body.appendChild(i);
+           i.src=url;
+
+           i.addEventListener('load',()=>{
+               ok();
+           });
+           i.addEventListener('error',()=>{
+               error();
+           });
+               }
+       )
+     }
+
+     let p = loadImege(url1);
+
+     p.then(()=>{
+         console.log("imege 1");
+         return loadImege(url2);
+             }).then(()=>{
+               console.log("imege2");
+               return loadImege(url3);
+             }).then(()=>{
+              console.log("imege3");
+             })
+
+
+
+
+
+
+
+
+
+
+
+ </script>
+</body>
+</html>
