@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>async</title>
+</head>
+<body>
+ <button id="myButton">push here!</button>
+
+ <script>
+     var batn = document.getElementById("myButton");
+     batn.addEventListener("click",function () {
+         setTimeout(function () {
+             alert('hello!');
+         }, 5000);
+     }
+     );
+ </script>
+</body>
+</html>
